@@ -1,0 +1,68 @@
+/* styles.css */
+
+/* Styles par défaut (mode clair) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s; /* Transition douce pour le mode sombre */
+}
+
+.logo-container {
+  text-align: center; /* Centre le logo horizontalement */
+  margin: 20px 0; /* Ajoute de la marge au-dessus et en dessous du logo */
+}
+
+.logo-container img {
+  width: 150px; /* ou la taille que vous préférez */
+  height: auto; /* garde le ratio de l'image */
+  transition: filter 0.3s; /* Transition douce pour la luminosité du logo */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  transition: background-color 0.3s, color 0.3s; /* Transition douce pour le tableau */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2
+}
+
+/* Styles pour le mode sombre */
+.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0; /* Gris clair pour une meilleure lisibilité */
+}
+
+.dark-mode .logo-container img {
+  filter: brightness(0.8); /* Diminue la luminosité du logo en mode sombre si nécessaire */
+}
+
+.dark-mode table {
+  border-color: #424242; /* Couleur des bordures de table plus adaptée au mode sombre */
+}
+
+.dark-mode th {
+  background-color: #333333; /* Fond plus foncé pour les en-têtes de table en mode sombre */
+  color: #ffffff; /* Texte blanc pour les en-têtes de table en mode sombre */
+}
+
+.dark-mode tr:nth-child(even){
+  background-color: #2a2a2a; /* Alternance des couleurs de fond pour les lignes du tableau en mode sombre */
+}
+
+/* Couleur spécifique pour le texte des cellules en mode sombre */
+.dark-mode td {
+  color: #d0d0d0; /* Une teinte légèrement plus claire que le texte général pour le contenu de la table */
+}
+
+/* Ajoutez des styles pour d'autres éléments si nécessaire... */
