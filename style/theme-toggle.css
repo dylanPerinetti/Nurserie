@@ -2,8 +2,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 40px; /* Largeur réduite du commutateur */
+  height: 22px; /* Hauteur réduite du commutateur */
 }
 
 /* Style du curseur du commutateur */
@@ -21,44 +21,41 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
   transition: .4s;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 18px; /* Hauteur ajustée pour correspondre au nouveau design */
+  width: 18px; /* Largeur ajustée pour correspondre au nouveau design */
+  left: 2px; /* Position ajustée pour alignement initial */
+  bottom: 2px; /* Position ajustée pour alignement initial */
   background-color: white;
-  -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #325976;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #325976;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  transform: translateX(20px); /* Translation ajustée pour le nouveau design */
 }
 
 /* Style arrondi pour le curseur (aspect on/off) */
 .slider.round {
-  border-radius: 34px;
+  border-radius: 22px; /* Ajusté pour correspondre à la hauteur réduite */
 }
 
 .slider.round:before {
   border-radius: 50%;
 }
+
 
 /* Style de base */
 * { box-sizing: border-box; }
@@ -143,11 +140,6 @@ input:checked + .slider:before {
 
 .dark-mode .topnav a:hover {
   background-color: #454e56; /* Fond de survol plus foncé pour le mode nuit */
-}
-
-.dark-mode .topnav a.active {
-  background-color: #1a73e8; /* Couleur active modifiée pour le mode nuit */
-  color: white;
 }
 
 .dark-mode .topnav input[type=text], .dark-mode .topnav input[type=password] {

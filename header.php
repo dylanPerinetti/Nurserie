@@ -5,7 +5,7 @@
       <img src="img/BigFunckingProject.png" alt="Logo BFP">
     </a>
 
-    <a class="active" href="index.php">Home</a>
+    <a href="index.php">Home</a>
       <a href="cam.php">Caméras</a>
     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
       <a href="chauffage.php">Chauffage</a>
@@ -29,12 +29,16 @@
 
     <?php endif; ?>
   </div>
-
-  
-  <label for="darkModeToggle">Thème :</label>
-  <label class="switch">
-      <input type="checkbox" id="darkModeToggle">
-      <span class="slider round"></span>
-  </label>
-
   <h1><?=$title?></h1>
+<div id="mySidenav" class="sidenav">
+  <a href="#" id="blog">Blog</a>
+  <a href="#" id="projects">Projects</a>
+  <a href="#" id="contact">Contact</a>
+  <a href="#" id="theme">
+    <label for="darkModeToggle">Thème </label>
+      <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider round"></span>
+    </label>
+  </a>
+</div>

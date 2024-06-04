@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require 'dbconfig.php';
 
@@ -8,7 +7,7 @@ $Getusername = $_POST['Getusername'];
 $Getpassword = $_POST['Getpsw'];
 
 // Ouvrir le fichier de log en mode append
-$file = fopen("connection_log.txt", "a");
+$file = fopen("log/connection.log", "a");
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -17,7 +16,7 @@ try {
   $stmt = $conn->prepare("SELECT id FROM users WHERE Login = :Getusername AND Mot_de_passe = :Getpassword");
   $stmt->bindParam(':Getusername', $Getusername);
   
-  // Idéalement, votre mot de passe devrait être hashé
+  // Idéalement, le mot de passe devrait être hashé
   // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
   // $stmt->bindParam(':password', $hashedPassword);
   

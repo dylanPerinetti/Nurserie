@@ -1,21 +1,53 @@
 /* styles.css */
+/* Style the links inside the sidenav */
+#mySidenav a {
+  position: absolute; /* Position them relative to the browser window */
+  left: -130px; /* Position them outside of the screen */
+  transition: 0.3s; /* Add transition on hover */
+  padding: 15px; /* 15px padding */
+  width: 150px; /* Set a specific width */
+  text-decoration: none; /* Remove underline */
+  font-size: 20px; /* Increase font size */
+  color: white; /* White text color */
+  border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+}
+
+#mySidenav a:hover {
+  left: 0; /* On mouse-over, make the elements appear as they should */
+}
+
+
+#blog {
+  top: 400px;
+  background-color: #04AA6D;
+}
+
+#projects {
+  top: 460px;
+  background-color: #2196F3; /* Blue */
+}
+
+#contact {
+  top: 520px;
+  background-color: #f44336; /* Red */
+}
+
+#theme{
+  top: 580px;
+  background-color: #555 /* Light Black */
+}
 
 /* Styles par défaut (mode clair) */
 body {
+  font-family: Verdana, sans-serif;
   background-color: #ffffff;
   color: #000000;
   transition: background-color 0.3s, color 0.3s; /* Transition douce pour le mode sombre */
 }
 
-.logo-container {
-  text-align: center; /* Centre le logo horizontalement */
-  margin: 20px 0; /* Ajoute de la marge au-dessus et en dessous du logo */
-}
-
-.logo-container img {
-  width: 150px; /* ou la taille que vous préférez */
-  height: auto; /* garde le ratio de l'image */
-  transition: filter 0.3s; /* Transition douce pour la luminosité du logo */
+h1 {
+  text-align: center;
+  margin-top: 20px; /* Ajustez selon vos besoins */
 }
 
 table {
@@ -65,4 +97,160 @@ tr:nth-child(even){
   color: #d0d0d0; /* Une teinte légèrement plus claire que le texte général pour le contenu de la table */
 }
 
-/* Ajoutez des styles pour d'autres éléments si nécessaire... */
+/* Styles pour les widgets */
+.widget-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+  margin-left: 20px; /* Espace des bords gauche */
+  margin-right: 20px; /* Espace des bords droit */
+  flex-wrap: wrap;
+}
+
+.widget {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 48%; /* Ajustement de la largeur des widgets */
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Espace entre les widgets sur petits écrans */
+}
+
+/* Ajustement pour espacement entre widgets sur grands écrans */
+.widget:nth-child(odd) {
+  margin-right: 4%;
+}
+
+#table-widget {
+  /* Specific styles for the table widget if needed */
+}
+
+#chart-widget {
+  /* Specific styles for the chart widget if needed */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .widget {
+    width: 100%;
+    margin-right: 0; /* Annule le margin-right sur petits écrans */
+  }
+}
+
+/* Styles pour le widget de thermostat */
+#thermostat-widget {
+  border: 1px solid #ddd; /* Add this line to match other widgets */
+  background-color: #ffffff; /* White background for light mode */
+  color: #000000; /* Black text for light mode */
+  padding: 20px;
+  width: 100%; /* Full width */
+  max-width: 600px; /* Maximum width for larger screens */
+  margin: auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for dark mode */
+}
+
+.dark-mode #thermostat-widget {
+  background-color: #121212; /* Dark background for dark mode */
+  color: #e0e0e0; /* Light text for dark mode */
+  border-color: #424242; /* Darker border for dark mode */
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#temperature-display {
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 25px;
+}
+
+#temperature-display button {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  color: inherit; /* Inherit color based on mode */
+}
+
+#decrease-temp:hover {
+  color: blue;
+}
+
+#increase-temp:hover {
+  color: red;
+}
+
+#current-temp {
+  margin-right: 25%;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#controls button {
+  background-color: #555;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  flex-grow: 1;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.dark-mode #controls button {
+  background-color: #424242; /* Darker background for buttons in dark mode */
+}
+
+#modes {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#modes button {
+  background-color: #555;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  padding: 5px;
+  margin: 2px;
+  flex-grow: 1;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.dark-mode #modes button {
+  background-color: #424242; /* Darker background for buttons in dark mode */
+}
+
+#modes button#eco:hover {
+  background-color: #4CAF50; /* Green */
+}
+
+#modes button#comfort:hover {
+  background-color: #FFC107; /* Amber */
+}
+
+#modes button#boost:hover {
+  background-color: #F44336; /* Red */
+}

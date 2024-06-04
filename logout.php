@@ -2,7 +2,7 @@
 session_start(); // Démarre la gestion de session
 
 // Ouvrir le fichier de log en mode append
-$file = fopen("connection_log.txt", "a");
+$file = fopen("log/connection.log", "a");
 
 // Vérifier si un utilisateur est actuellement connecté pour logger sa déconnexion
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
