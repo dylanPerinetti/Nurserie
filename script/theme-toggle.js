@@ -1,4 +1,7 @@
-// theme-toggle.js
+// Vérifiez si le mode sombre est activé
+if (localStorage.getItem('darkMode') === 'enabled') {
+  document.documentElement.classList.add('dark-mode');
+}
 
 function toggleDarkMode() {
   var body = document.body;
@@ -14,6 +17,6 @@ window.onload = function() {
     document.body.classList.add("dark-mode");
     document.getElementById("darkModeToggle").checked = true;
   }
-}
 
-document.getElementById("darkModeToggle").addEventListener('change', toggleDarkMode);
+  document.getElementById("darkModeToggle").addEventListener('change', toggleDarkMode);
+}

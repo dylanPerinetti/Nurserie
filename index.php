@@ -1,19 +1,17 @@
 <?php 
   session_start();
-  $title = "Menu"
+  $title = "Accueil"
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Nurserie • Home</title>
+  <title>Nurserie • <?=$title?></title>
   <link rel="stylesheet" href="style/styles.css">
-  <link rel="stylesheet" href="style/theme-toggle.css">
   <link rel="stylesheet" href="style/navbar.css">
+  <script src="script/theme-toggle.js" defer></script>
+  <script src="script/error.js" defer></script>
 </head>
 <body>
   <?php require 'header.php'; ?>
-
-  <script src="script/theme-toggle.js"></script>
-  <script src="script/error.js"></script>
 </body>
 </html>

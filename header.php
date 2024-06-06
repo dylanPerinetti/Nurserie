@@ -5,7 +5,7 @@
       <img src="img/BigFunckingProject.png" alt="Logo BFP">
     </a>
 
-    <a href="index.php">Home</a>
+    <a href="index.php">Accueil</a>
       <a href="cam.php">Caméras</a>
     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
       <a href="chauffage.php">Chauffage</a>
