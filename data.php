@@ -9,6 +9,7 @@ $title = "Données des Capteurs";
     <title>Nurserie • <?=$title?></title>
     <link rel="stylesheet" href="style/styles.css">
     <link rel="stylesheet" href="style/navbar.css">
+  <link rel="stylesheet" href="style/widget.css">
     <script src="script/theme-toggle.js" defer></script>
     <script src="script/error.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

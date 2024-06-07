@@ -1,0 +1,150 @@
+/* Styles for widget */
+.widget {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 30px); /* Largeur ajustée pour 2 widgets par ligne */
+  height: 500px; /* Hauteur fixe pour les widgets */
+  overflow-y: auto; /* Ajoute une barre de défilement verticale si le contenu dépasse */
+  overflow-x: hidden; /* Cache la barre de défilement horizontale */
+  margin: 10px; /* Marge autour des widgets */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .widget {
+    width: 100%; /* Largeur de 100% pour les petits écrans */
+    height: 300px; /* Hauteur fixe réduite pour les petits écrans */
+    margin-right: 0; /* Supprime la marge à droite */
+    max-width: 100%; /* Largeur maximale de 100% pour les petits écrans */
+  }
+}
+
+#video-widget {
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 20px;
+  width: calc(50% - 30px); /* Largeur ajustée pour 2 widgets par ligne */
+  height: 500px; /* Hauteur fixe pour les widgets */
+  overflow-y: auto; /* Ajoute une barre de défilement verticale si le contenu dépasse */
+  overflow-x: hidden; /* Cache la barre de défilement horizontale */
+  margin: 10px; /* Marge autour des widgets */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Ajout de la transition pour border-color */
+  box-sizing: border-box;
+}
+
+#thermostat-widget, 
+#recording-widget {
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 20px;
+  width: 50%; /* Largeur ajustée pour les widgets centrés */
+  height: 250px; /* Hauteur réduite de moitié */
+  overflow-y: auto; /* Ajoute une barre de défilement verticale si le contenu dépasse */
+  overflow-x: hidden; /* Cache la barre de défilement horizontale */
+  margin: 10px auto; /* Centre les widgets et ajoute une marge en haut et en bas */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Ajout de la transition pour border-color */
+  box-sizing: border-box;
+}
+
+.dark-mode .widget, 
+.dark-mode #video-widget, 
+.dark-mode #thermostat-widget, 
+.dark-mode #recording-widget {
+  background-color: #121212;
+  color: #e0e0e0;
+  border-color: #424242; /* Couleur des bordures en mode sombre */
+}
+
+#temperature-display {
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 25px;
+}
+
+#temperature-display button {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  color: inherit;
+}
+
+#decrease-temp:hover {
+  color: blue;
+}
+
+#increase-temp:hover {
+  color: red;
+}
+
+#controls, 
+#modes {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#controls button, 
+#modes button {
+  background-color: #555;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  flex-grow: 1;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dark-mode #controls button, 
+.dark-mode #modes button {
+  background-color: #424242;
+}
+
+#modes button {
+  padding: 5px;
+  margin: 2px;
+  font-size: 20px;
+}
+
+#modes button#eco:hover {
+  background-color: #4CAF50;
+}
+
+#modes button#comfort:hover {
+  background-color: #FFC107;
+}
+
+#modes button#boost:hover {
+  background-color: #F44336;
+}
+
+/* Styles for widget container */
+.widget-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+
+#widget-name {
+  font-size: 30px;
+}

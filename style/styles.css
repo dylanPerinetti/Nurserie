@@ -1,534 +1,445 @@
-/* Ajout de styles spécifiques pour le widget d'explorateur de fichiers */
-.media-wrapper {
-  position: relative; /* Permet de positionner les éléments enfants en absolu par rapport à cet élément */
-  width: 150px; /* Ajuste la largeur du conteneur */
-  height: 150px; /* Ajuste la hauteur du conteneur */
-  margin: 10px; /* Espace autour du conteneur */
-  display: inline-block; /* Affiche l'élément en ligne avec d'autres éléments */
+/* Global styles */
+* {
+  box-sizing: border-box;
 }
 
-.media-wrapper img,
-.media-wrapper video {
-  width: 100%; /* Média prend toute la largeur du conteneur */
-  height: 100%; /* Média prend toute la hauteur du conteneur */
-  object-fit: cover; /* Recadre le média pour couvrir le conteneur sans déformation */
-  transition: filter 0.5s; /* Transition douce pour les filtres */
+body {
+  font-family: Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.media-wrapper .overlay {
-  position: absolute; /* Positionne l'élément par rapport à son parent */
-  bottom: 0; /* Aligne en bas du conteneur parent */
-  left: 0; /* Aligne à gauche du conteneur parent */
-  right: 0; /* Aligne à droite du conteneur parent */
-  height: 0; /* Hauteur initiale à 0 */
-  overflow: hidden; /* Cache le contenu débordant */
-  background: rgba(0, 0, 0, 0.5); /* Arrière-plan semi-transparent noir */
-  transition: height 0.8s ease; /* Transition douce pour la hauteur */
-}
-
-.media-wrapper:hover img,
-.media-wrapper:hover video {
-  filter: grayscale(100%); /* Applique un filtre en niveaux de gris au média au survol */
-}
-
-.media-wrapper:hover .overlay {
-  height: 100%; /* Augmente la hauteur de l'overlay à 100% au survol */
-}
-
-.download-icon {
-  color: white; /* Couleur blanche pour l'icône */
-  font-size: 24px; /* Taille de police de l'icône */
-  position: absolute; /* Positionne l'élément de manière absolue */
-  top: 50%; /* Centre verticalement */
-  left: 50%; /* Centre horizontalement */
-  transform: translate(-50%, -50%); /* Ajuste le centrage */
-  text-decoration: none; /* Supprime la décoration du texte */
-  opacity: 0; /* Rend l'icône invisible initialement */
-  transition: opacity 0.5s; /* Transition douce pour l'opacité */
-}
-
-.media-wrapper:hover .download-icon {
-  opacity: 1; /* Rend l'icône visible au survol */
-}
-
-/* Styles additionnels */
-.media-gallery {
-  display: flex; /* Utilise le flexbox pour la mise en page */
-  flex-wrap: wrap; /* Permet le retour à la ligne pour les éléments flex */
-  gap: 10px; /* Espace entre les éléments */
-}
-
-.directory-list {
-  list-style-type: none; /* Supprime les puces des listes */
-  padding: 0; /* Supprime les espacements internes */
-}
-
-.directory-list li {
-  margin: 5px 0; /* Espace entre les éléments de la liste */
-  display: flex; /* Utilise flexbox pour aligner l'icône et le texte */
-  align-items: center; /* Aligne les items verticalement au centre */
-}
-
-.directory-list a {
-  text-decoration: none; /* Supprime la décoration des liens */
-  color: #007bff; /* Couleur bleue pour les liens */
-  margin-left: 5px; /* Espace entre l'icône et le texte */
-}
-
-.directory-list a:hover {
-  text-decoration: underline; /* Souligne les liens au survol */
-}
-
-.files-icon {
-  width: 24px; /* Largeur de l'icône */
-  height: 24px; /* Hauteur de l'icône */
-}
-
-/* Styles pour le breadcrumb à l'intérieur du widget */
-.breadcrumb {
-  padding: 8px 15px; /* Espacement interne pour le breadcrumb */
-  margin-bottom: 20px; /* Espace en bas du breadcrumb */
-  list-style: none; /* Supprime les puces des listes */
-  background-color: #f5f5f5; /* Couleur de fond grise claire */
-  border-radius: 4px; /* Bords arrondis */
-}
-
-.breadcrumb > li {
-  display: inline-block; /* Affiche les éléments en ligne */
-}
-
-.breadcrumb > li + li:before {
-  content: "/\00a0"; /* Ajoute un slash entre les éléments */
-  padding: 0 5px; /* Espace autour du slash */
-  color: #ccc; /* Couleur grise pour le slash */
-}
-
-.breadcrumb a {
-  text-decoration: none; /* Supprime la décoration des liens */
-  color: #007bff; /* Couleur bleue pour les liens */
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline; /* Souligne les liens au survol */
-}
-
-/* Styles pour le widget */
-.widget-wide {
-  width: calc(100% - 20px); /* Largeur du widget ajustée avec une marge */
-  height: 500px; /* Hauteur fixe du widget */
-  overflow-y: auto; /* Ajoute une barre de défilement verticale si le contenu dépasse */
-  overflow-x: hidden; /* Cache la barre de défilement horizontale */
-  margin: 0 auto 20px auto; /* Centre le widget et ajoute une marge en bas */
-  box-sizing: border-box; /* Inclut les bordures et le padding dans la largeur */
-  max-width: calc(200% - 20px); /* Largeur maximale pour occuper l'espace de deux widgets */
+h1 {
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   .widget-wide {
-    width: 100%; /* Largeur de 100% pour les petits écrans */
-    height: 300px; /* Hauteur fixe réduite pour les petits écrans */
-    margin-right: 0; /* Supprime la marge à droite */
-    max-width: 100%; /* Largeur maximale de 100% pour les petits écrans */
+    width: 100%;
+    height: 300px;
+    margin-right: 0;
+    max-width: 100%;
   }
 }
 
-/* Global styles */
-* {
-  box-sizing: border-box; /* Utilise le modèle de boîte border-box */
+/* Styles for stream container */
+.stream-container {
+  border-radius: 5px;
+  margin: 5px;
+  display: inline-block;
 }
 
-body {
-  font-family: Verdana, sans-serif; /* Police de caractère */
-  background-color: #ffffff; /* Couleur de fond blanche */
-  color: #000000; /* Couleur du texte noire */
-  transition: background-color 0.3s, color 0.3s; /* Transitions douces pour les couleurs */
+.stream-container.live {
+  border: 3px solid red;
 }
 
-h1 {
-  text-align: center; /* Centre le texte */
-  margin-top: 20px; /* Espace en haut */
+.stream-container.offline {
+  border: 3px solid grey;
 }
 
-/* Pagination */
-.pagination a {
-  text-decoration: none; /* Supprime la décoration des liens */
-  color: blue; /* Couleur bleue pour les liens */
-  padding: 0 5px; /* Espace autour des liens */
+/* Styles for responsive stream */
+.responsive-stream {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
 }
 
-.pagination a.disabled {
-  pointer-events: none; /* Désactive les événements pour les liens désactivés */
-  color: grey; /* Couleur grise pour les liens désactivés */
+/* Styles for live indicator */
+.live-indicator {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
 }
 
-/* Switch */
-.switch {
-  position: relative; /* Position relative pour le conteneur du switch */
-  display: inline-block; /* Affiche le switch en ligne */
-  width: 40px; /* Largeur du switch */
-  height: 22px; /* Hauteur du switch */
+.live-indicator.live .live-text,
+.live-indicator.live .live-dot {
+  color: red;
 }
 
-.switch input {
-  opacity: 0; /* Rends l'input invisible */
-  width: 0; /* Largeur nulle */
-  height: 0; /* Hauteur nulle */
+.live-indicator.offline .live-text {
+  color: grey;
 }
 
-.slider {
-  position: absolute; /* Positionne le slider en absolu */
-  cursor: pointer; /* Curseur en forme de pointeur */
-  top: 0; /* Aligne en haut du conteneur */
-  left: 0; /* Aligne à gauche du conteneur */
-  right: 0; /* Aligne à droite du conteneur */
-  bottom: 0; /* Aligne en bas du conteneur */
-  background-color: #ccc; /* Couleur de fond grise claire */
-  transition: .4s; /* Transition douce pour le slider */
+.live-indicator.offline .live-dot {
+  background-color: grey;
+  animation: none;
 }
 
-.slider:before {
-  position: absolute; /* Position absolue pour l'élément enfant */
-  content: ""; /* Contenu vide */
-  height: 18px; /* Hauteur du slider */
-  width: 18px; /* Largeur du slider */
-  left: 2px; /* Espace à gauche */
-  bottom: 2px; /* Espace en bas */
-  background-color: white; /* Couleur de fond blanche */
-  transition: .4s; /* Transition douce pour le slider */
+.live-text {
+  margin-right: 10px;
 }
 
-input:checked + .slider {
-  background-color: #325976; /* Couleur de fond pour le slider activé */
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  animation: blink 1s infinite;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #325976; /* Ombre pour le slider focusé */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-input:checked + .slider:before {
-  transform: translateX(20px); /* Déplace le slider activé */
+.media-name {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
 }
 
-.slider.round {
-  border-radius: 22px; /* Bordures arrondies pour le slider */
+/* Media wrapper */
+.media-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  display: inline-block;
 }
 
-.slider.round:before {
-  border-radius: 50%; /* Bordures arrondies pour l'élément enfant */
+.media-wrapper img,
+.media-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.5s;
 }
 
-/* Navigation */
-.topnav {
-  overflow: hidden; /* Cache le contenu débordant */
-  background-color: #e9e9e9; /* Couleur de fond grise claire */
-  transition: background-color 0.3s; /* Transition douce pour la couleur de fond */
+.media-wrapper .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  transition: height 0.8s ease;
 }
 
-.topnav a {
-  float: left; /* Aligne les liens à gauche */
-  display: block; /* Affiche les liens en bloc */
-  color: black; /* Couleur noire pour les liens */
-  text-align: center; /* Centre le texte */
-  padding: 14px 16px; /* Espacement interne pour les liens */
-  text-decoration: none; /* Supprime la décoration des liens */
-  font-size: 17px; /* Taille de police */
-  transition: background-color 0.3s, color 0.3s; /* Transition douce pour les couleurs */
+.media-wrapper:hover img,
+.media-wrapper:hover video {
+  filter: grayscale(100%);
 }
 
-.topnav a:hover {
-  background-color: #ddd; /* Couleur de fond grise pour les liens au survol */
+.media-wrapper:hover .overlay {
+  height: 100%;
 }
 
-.topnav a.active {
-  background-color: #2196F3; /* Couleur de fond bleue pour les liens actifs */
-  color: white; /* Couleur blanche pour les liens actifs */
+.download-icon {
+  color: white;
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
-.topnav .login-container {
-  float: right; /* Aligne le conteneur de login à droite */
+.media-wrapper:hover .download-icon {
+  opacity: 1;
 }
 
-.topnav input[type=text], 
-.topnav input[type=password] {
-  padding: 6px; /* Espacement interne */
-  margin-top: 8px; /* Espace en haut */
-  font-size: 17px; /* Taille de police */
-  border: none; /* Supprime les bordures */
-  background: #f1f1f1; /* Couleur de fond grise claire */
-  transition: background-color 0.3s, color 0.3s; /* Transition douce pour les couleurs */
+/* Media gallery */
+.media-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.topnav .login-container button {
-  float: right; /* Aligne le bouton à droite */
-  padding: 6px; /* Espacement interne */
-  margin-top: 8px; /* Espace en haut */
-  margin-right: 16px; /* Espace à droite */
-  background: #ddd; /* Couleur de fond grise claire */
-  font-size: 17px; /* Taille de police */
-  border: none; /* Supprime les bordures */
-  cursor: pointer; /* Curseur en forme de pointeur */
-  transition: background-color 0.3s; /* Transition douce pour la couleur de fond */
+/* Directory list */
+.directory-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-.topnav .login-container button:hover {
-  background: #ccc; /* Couleur de fond grise pour le bouton au survol */
+.directory-list li {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
 }
 
-/* Dark mode */
-.dark-mode .topnav {
-  background-color: #343a40; /* Couleur de fond foncée pour la topnav en mode sombre */
+.directory-list a {
+  text-decoration: none;
+  color: #007bff;
+  margin-left: 5px;
 }
 
-.dark-mode .topnav a {
-  color: #dcdcdc; /* Couleur claire pour les liens en mode sombre */
+.directory-list a:hover {
+  text-decoration: underline;
 }
 
-.dark-mode .topnav a:hover {
-  background-color: #454e56; /* Couleur de fond foncée pour les liens au survol en mode sombre */
+.files-icon {
+  width: 24px;
+  height: 24px;
 }
 
-.dark-mode .topnav input[type=text], 
-.dark-mode .topnav input[type=password] {
-  background: #555; /* Couleur de fond foncée pour les inputs en mode sombre */
-  color: white; /* Couleur blanche pour le texte des inputs */
+/* Breadcrumb */
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 4px;
 }
 
-.dark-mode .topnav .login-container button {
-  background: #5e6770; /* Couleur de fond foncée pour le bouton en mode sombre */
+.breadcrumb > li {
+  display: inline-block;
 }
 
-.dark-mode .topnav .login-container button:hover {
-  background: #70757a; /* Couleur de fond plus claire pour le bouton au survol en mode sombre */
+.breadcrumb > li + li:before {
+  content: "/\00a0";
+  padding: 0 5px;
+  color: #ccc;
 }
 
-.dark-mode {
-  background-color: #121212; /* Couleur de fond très foncée pour le corps en mode sombre */
-  color: #e0e0e0; /* Couleur claire pour le texte en mode sombre */
+.breadcrumb a {
+  text-decoration: none;
+  color: #007bff;
 }
 
-.dark-mode .logo-container img {
-  filter: brightness(0.8); /* Réduit la luminosité des images en mode sombre */
-}
-
-.dark-mode table {
-  border-color: #424242; /* Couleur des bordures des tables en mode sombre */
-}
-
-.dark-mode th {
-  background-color: #333333; /* Couleur de fond foncée pour les en-têtes de table en mode sombre */
-  color: #ffffff; /* Couleur blanche pour le texte des en-têtes */
-}
-
-.dark-mode tr:nth-child(even) {
-  background-color: #2a2a2a; /* Couleur de fond foncée pour les lignes paires en mode sombre */
-}
-
-.dark-mode td {
-  color: #d0d0d0; /* Couleur claire pour le texte des cellules en mode sombre */
-}
-
-/* Tables */
-table {
-  width: 100%; /* Table prend toute la largeur du conteneur */
-  border-collapse: collapse; /* Fusionne les bordures des cellules */
-  transition: background-color 0.3s, color 0.3s; /* Transition douce pour les couleurs */
-}
-
-th, td {
-  border: 1px solid #ddd; /* Bordure grise claire pour les cellules */
-  padding: 8px; /* Espacement interne des cellules */
-}
-
-th {
-  background-color: #f2f2f2; /* Couleur de fond grise claire pour les en-têtes */
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2; /* Couleur de fond grise claire pour les lignes paires */
-}
-
-/* Widgets */
-.widget-container {
-  display: flex; /* Utilise le flexbox pour la mise en page */
-  justify-content: space-between; /* Espace entre les widgets */
-  align-items: flex-start; /* Aligne les widgets au début */
-  margin: 20px; /* Espace autour du conteneur */
-  flex-wrap: wrap; /* Permet le retour à la ligne pour les widgets */
-}
-
-.widget {
-  border: 1px solid #ddd; /* Bordure grise claire pour les widgets */
-  border-radius: 8px; /* Bords arrondis */
-  padding: 20px; /* Espacement interne */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-  width: 100%; /* Largeur de 100% */
-  max-width: 48%; /* Largeur maximale pour les grands écrans */
-  margin-bottom: 20px; /* Espace en bas */
-  box-sizing: border-box; /* Inclut les bordures et le padding dans la largeur */
-}
-
-.widget:nth-child(odd) {
-  margin-right: 4%; /* Espace à droite pour les widgets impairs */
-}
-
-@media (max-width: 768px) {
-  .widget {
-    width: 100%; /* Largeur de 100% pour les petits écrans */
-    margin-right: 0; /* Supprime la marge à droite */
-  }
-}
-
-#widget-name{
-  font-size: 30px; /* Taille de police */
-}
-
-#thermostat-widget, 
-#video-widget, 
-#recording-widget {
-  border: 1px solid #ddd; /* Bordure grise claire */
-  background-color: #ffffff; /* Couleur de fond blanche */
-  color: #000000; /* Couleur noire pour le texte */
-  padding: 20px; /* Espacement interne */
-  width: 100%; /* Largeur de 100% */
-  max-width: 600px; /* Largeur maximale */
-  margin: auto; /* Centre le widget */
-  border-radius: 8px; /* Bords arrondis */
-  display: flex; /* Utilise le flexbox pour la mise en page */
-  flex-direction: column; /* Aligne les enfants en colonne */
-  align-items: center; /* Centre les enfants */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-  transition: background-color 0.3s, color 0.3s; /* Transition douce pour les couleurs */
-}
-
-.dark-mode #thermostat-widget, 
-.dark-mode #video-widget, 
-.dark-mode #recording-widget {
-  background-color: #121212; /* Couleur de fond foncée pour les widgets en mode sombre */
-  color: #e0e0e0; /* Couleur claire pour le texte en mode sombre */
-  border-color: #424242; /* Couleur des bordures en mode sombre */
-}
-
-#temperature-display {
-  margin: 10px 0; /* Espace en haut et en bas */
-  padding: 10px; /* Espacement interne */
-  text-align: center; /* Centre le texte */
-  width: 100%; /* Largeur de 100% */
-  font-size: 25px; /* Taille de police */
-}
-
-#temperature-display button {
-  background-color: transparent; /* Fond transparent pour les boutons */
-  border: none; /* Supprime les bordures */
-  font-size: 30px; /* Taille de police */
-  color: inherit; /* Hérite de la couleur du texte */
-}
-
-#decrease-temp:hover {
-  color: blue; /* Couleur bleue pour le bouton au survol */
-}
-
-#increase-temp:hover {
-  color: red; /* Couleur rouge pour le bouton au survol */
-}
-
-#controls, 
-#modes {
-  display: flex; /* Utilise le flexbox pour la mise en page */
-  justify-content: space-around; /* Espace autour des boutons */
-  width: 100%; /* Largeur de 100% */
-}
-
-#controls button, 
-#modes button {
-  background-color: #555; /* Couleur de fond grise foncée */
-  border-radius: 8px; /* Bords arrondis */
-  border: none; /* Supprime les bordures */
-  color: white; /* Couleur blanche pour le texte */
-  padding: 10px; /* Espacement interne */
-  margin: 10px; /* Espace autour des boutons */
-  flex-grow: 1; /* Les boutons occupent tout l'espace disponible */
-  font-size: 1.5em; /* Taille de police */
-  cursor: pointer; /* Curseur en forme de pointeur */
-  transition: background-color 0.3s; /* Transition douce pour la couleur de fond */
-}
-
-.dark-mode #controls button, 
-.dark-mode #modes button {
-  background-color: #424242; /* Couleur de fond foncée pour les boutons en mode sombre */
-}
-
-#modes button {
-  padding: 5px; /* Espacement interne réduit */
-  margin: 2px; /* Espace réduit autour des boutons */
-  font-size: 20px; /* Taille de police réduite */
-}
-
-#modes button#eco:hover {
-  background-color: #4CAF50; /* Couleur verte pour le bouton au survol */
-}
-
-#modes button#comfort:hover {
-  background-color: #FFC107; /* Couleur jaune pour le bouton au survol */
-}
-
-#modes button#boost:hover {
-  background-color: #F44336; /* Couleur rouge pour le bouton au survol */
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
 
 /* Sidenav */
 #mySidenav a {
-  position: absolute; /* Position absolue pour les liens */
-  left: -130px; /* Position initiale à gauche */
-  transition: 0.3s; /* Transition douce pour la position */
-  padding: 15px; /* Espacement interne */
-  width: 150px; /* Largeur des liens */
-  text-decoration: none; /* Supprime la décoration des liens */
-  font-size: 20px; /* Taille de police */
-  color: white; /* Couleur blanche pour le texte */
-  border-radius: 0 5px 5px 0; /* Bords arrondis à droite */
+  position: absolute;
+  left: -130px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 150px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
 }
 
 #mySidenav a:hover {
-  left: 0; /* Fait apparaître les liens au survol */
+  left: 0;
 }
 
 #blog {
-  top: 400px; /* Position verticale pour le lien blog */
-  background-color: #04AA6D; /* Couleur de fond verte */
+  top: 400px;
+  background-color: #04AA6D;
 }
 
 #projects {
-  top: 460px; /* Position verticale pour le lien projects */
-  background-color: #2196F3; /* Couleur de fond bleue */
+  top: 460px;
+  background-color: #2196F3;
 }
 
 #contact {
-  top: 520px; /* Position verticale pour le lien contact */
-  background-color: #f44336; /* Couleur de fond rouge */
+  top: 520px;
+  background-color: #f44336;
 }
 
 #theme {
-  top: 580px; /* Position verticale pour le lien theme */
-  background-color: #555; /* Couleur de fond grise foncée */
+  top: 580px;
+  background-color: #555;
 }
 
-@media screen and (max-width: 600px) {
-  /* Code réactif */
-  .topnav a,
-  .topnav .login-container,
-  .topnav input[type=text],
-  .topnav input[type=password] {
-    float: none; /* Supprime l'alignement flottant */
-    display: block; /* Affiche les éléments en bloc */
-    text-align: left; /* Aligne le texte à gauche */
-    width: 100%; /* Largeur de 100% */
-    margin: 0; /* Supprime la marge */
-    padding: 14px; /* Espacement interne */
-  }
+/* Pagination */
+.pagination a {
+  text-decoration: none;
+  color: blue;
+  padding: 0 5px;
+}
 
-  .topnav .login-container button {
-    float: none; /* Supprime l'alignement flottant */
-    width: 100%; /* Largeur de 100% */
-  }
+.pagination a.disabled {
+  pointer-events: none;
+  color: grey;
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #325976;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #325976;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.slider.round {
+  border-radius: 22px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Navigation */
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+  transition: background-color 0.3s;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav .login-container {
+  float: right;
+}
+
+.topnav input[type=text],
+.topnav input[type=password] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  background: #f1f1f1;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.topnav .login-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.topnav .login-container button:hover {
+  background: #ccc;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Dark mode */
+.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode .topnav {
+  background-color: #343a40;
+}
+
+.dark-mode .topnav a {
+  color: #dcdcdc;
+}
+
+.dark-mode .topnav a:hover {
+  background-color: #454e56;
+}
+
+.dark-mode .topnav input[type=text],
+.dark-mode .topnav input[type=password] {
+  background: #555;
+  color: white;
+}
+
+.dark-mode .topnav .login-container button {
+  background: #5e6770;
+}
+
+.dark-mode .topnav .login-container button:hover {
+  background: #70757a;
+}
+
+.dark-mode .logo-container img {
+  filter: brightness(0.8);
+}
+
+.dark-mode table {
+  border-color: #424242;
+}
+
+.dark-mode th {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.dark-mode tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+.dark-mode td {
+  color: #d0d0d0;
 }

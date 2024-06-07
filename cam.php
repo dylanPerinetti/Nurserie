@@ -9,6 +9,7 @@ $title = "Caméras";
   <title>Nurserie • <?=$title?></title>
   <link rel="stylesheet" href="style/styles.css">
   <link rel="stylesheet" href="style/navbar.css">
+  <link rel="stylesheet" href="style/widget.css">
   <script src="script/theme-toggle.js" defer></script>
   <script src="script/error.js" defer></script>
   <script src="script/cam.js" defer></script>
